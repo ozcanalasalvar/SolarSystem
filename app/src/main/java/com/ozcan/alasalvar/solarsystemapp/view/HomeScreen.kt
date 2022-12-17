@@ -21,6 +21,7 @@ import com.ozcan.alasalvar.solarsystemapp.R
 import com.ozcan.alasalvar.solarsystemapp.component.PlanetSlider
 import com.ozcan.alasalvar.solarsystemapp.data.Planets
 import com.ozcan.alasalvar.solarsystemapp.navigation.Screen
+import com.ozcan.alasalvar.solarsystemapp.navigation.withArgs
 
 @OptIn(ExperimentalPagerApi::class, ExperimentalComposeUiApi::class)
 @Composable
@@ -61,8 +62,9 @@ fun HomeScreen(navController: NavController) {
                 .constrainAs(slider) {
                     top.linkTo(header.bottom)
                     bottom.linkTo(info.top)
-                }, onClick = { position ->
-                navController.navigate(Screen.Details.route + "/$position")
+                },
+            onClick = { position ->
+                navController.navigate(Screen.Details.withArgs(position))
             }
         )
 
