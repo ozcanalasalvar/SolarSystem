@@ -3,4 +3,6 @@
     <string name="title_activity_sample">SampleActivity</string>
     <string name="welcome_aboard">Welcome</string>
     <string name="see_what">Lets see what is out there</string>
+    <string name="text_home">Home</string>
+    <string name="text_details">Details</string>
 </resources>

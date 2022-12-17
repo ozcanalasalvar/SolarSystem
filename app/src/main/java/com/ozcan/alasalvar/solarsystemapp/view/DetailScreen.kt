@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.ozcan.alasalvar.solarsystemapp.R
@@ -26,18 +27,24 @@ import com.ozcan.alasalvar.solarsystemapp.data.Planets
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun DetailScreen() {
-    val planet = Planets.planets[4]
+fun DetailScreen(position: Int, navController: NavController) {
+
+    val planet = Planets.planets[position]
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(top = 30.dp, start = 20.dp, end = 20.dp)
     ) {
         Icon(
-            modifier = Modifier.size(34.dp),
             imageVector = ImageVector.vectorResource(id = R.drawable.back_arrow),
             contentDescription = "Some icon",
-            tint = MaterialTheme.colors.surface
+            tint = MaterialTheme.colors.surface,
+            modifier = Modifier
+                .size(34.dp)
+                .clickable {
+                    navController.popBackStack()
+                },
         )
 
         Column(

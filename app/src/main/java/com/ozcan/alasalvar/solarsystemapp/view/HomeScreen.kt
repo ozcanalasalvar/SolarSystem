@@ -13,16 +13,18 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.ozcan.alasalvar.solarsystemapp.R
 import com.ozcan.alasalvar.solarsystemapp.component.PlanetSlider
 import com.ozcan.alasalvar.solarsystemapp.data.Planets
+import com.ozcan.alasalvar.solarsystemapp.navigation.Screen
 
 @OptIn(ExperimentalPagerApi::class, ExperimentalComposeUiApi::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
 
     val planets = remember { mutableStateOf(Planets.planets) }
 
@@ -59,7 +61,9 @@ fun HomeScreen() {
                 .constrainAs(slider) {
                     top.linkTo(header.bottom)
                     bottom.linkTo(info.top)
-                }
+                }, onClick = { position ->
+                navController.navigate(Screen.Details.route + "/$position")
+            }
         )
 
 

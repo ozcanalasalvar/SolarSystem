@@ -1,6 +1,7 @@
 package com.ozcan.alasalvar.solarsystemapp.component
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -22,7 +23,8 @@ import kotlin.math.absoluteValue
 fun PlanetSlider(
     planets: List<Planet>,
     pagerState: PagerState,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: (Int) -> Unit
 ) {
 
 
@@ -69,7 +71,10 @@ fun PlanetSlider(
                 )
             }
             .fillMaxWidth()
-            .padding(5.dp, 0.dp, 0.dp, 0.dp),
+            .padding(5.dp, 0.dp, 0.dp, 0.dp)
+            .clickable {
+                onClick(page)
+            },
             shape = RoundedCornerShape(20.dp),
             border = BorderStroke(3.dp, Color.White),
             elevation = 10.dp
