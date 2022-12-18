@@ -28,7 +28,7 @@ fun DetailScreen(
     viewModel: DetailViewModel = hiltViewModel(),
     onBackLicked: () -> Unit
 ) {
-
+    //viewModel.init(position)
     val uiState = viewModel.uiState
 
     Box(
