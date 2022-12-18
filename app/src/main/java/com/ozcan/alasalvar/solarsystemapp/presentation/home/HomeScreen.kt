@@ -25,19 +25,17 @@ import com.google.accompanist.pager.rememberPagerState
 import com.ozcan.alasalvar.solarsystemapp.R
 import com.ozcan.alasalvar.solarsystemapp.presentation.component.PlanetSlider
 import com.ozcan.alasalvar.solarsystemapp.domain.model.Planet
-import com.ozcan.alasalvar.solarsystemapp.presentation.Screen
-import com.ozcan.alasalvar.solarsystemapp.presentation.withArgs
 
 
 @Composable
-fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltViewModel()) {
+fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), onPlanetClick: (Int) -> Unit) {
 
     val uiState = viewModel.uiState
 
     Box(modifier = Modifier.fillMaxSize()) {
         if (uiState.success.isNotEmpty()) {
             HomeContent(uiState.success) { position ->
-                navController.navigate(Screen.Details.withArgs(position))
+                onPlanetClick(position)
             }
         }
 

@@ -16,7 +16,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.ozcan.alasalvar.solarsystemapp.R
@@ -26,8 +25,8 @@ import com.ozcan.alasalvar.solarsystemapp.domain.model.Planet
 @Composable
 fun DetailScreen(
     position: Int,
-    navController: NavController,
-    viewModel: DetailViewModel = hiltViewModel()
+    viewModel: DetailViewModel = hiltViewModel(),
+    onBackLicked: () -> Unit
 ) {
 
     val uiState = viewModel.uiState
@@ -38,7 +37,7 @@ fun DetailScreen(
 
         if (uiState.success != null) {
             DetailContent(planet = uiState.success) {
-                navController.popBackStack()
+                onBackLicked()
             }
         }
 
