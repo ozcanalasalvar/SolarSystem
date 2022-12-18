@@ -1,4 +1,4 @@
-package com.ozcan.alasalvar.solarsystemapp.component
+package com.ozcan.alasalvar.solarsystemapp.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.ozcan.alasalvar.solarsystemapp.data.Planet
+import com.ozcan.alasalvar.solarsystemapp.domain.model.Planet
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -32,7 +32,7 @@ fun PlanetCard(modifier: Modifier = Modifier, planet: Planet) {
         ) {
 
             Text(
-                text = planet.position,
+                text = "${planet.position}",
                 color = Color.White,
                 fontSize = 250.sp,
                 fontWeight = FontWeight.Bold,

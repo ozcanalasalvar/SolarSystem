@@ -1,20 +1,18 @@
-package com.ozcan.alasalvar.solarsystemapp.component
+package com.ozcan.alasalvar.solarsystemapp.presentation.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.util.lerp
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.*
-import com.ozcan.alasalvar.solarsystemapp.data.Planet
+import com.ozcan.alasalvar.solarsystemapp.domain.model.Planet
 import kotlin.math.absoluteValue
 
 
@@ -73,7 +71,7 @@ fun PlanetSlider(
             .fillMaxWidth()
             .padding(5.dp, 0.dp, 0.dp, 0.dp)
             .clickable {
-                onClick(page)
+                onClick(planets[page].position)
             },
             shape = RoundedCornerShape(20.dp),
             border = BorderStroke(3.dp, Color.White),

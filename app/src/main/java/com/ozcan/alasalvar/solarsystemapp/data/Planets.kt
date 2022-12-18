@@ -1,10 +1,12 @@
 package com.ozcan.alasalvar.solarsystemapp.data
 
+import com.ozcan.alasalvar.solarsystemapp.domain.model.Planet
+
 object Planets {
 
     val planets = listOf(
         Planet(
-            position = "1",
+            position = 1,
             name = "Mercury",
             image = "https://space-facts.com/wp-content/uploads/mercury-transparent.png",
             velocity = "47.9",
@@ -13,7 +15,7 @@ object Planets {
             color = 0xFF1A1A1A
         ),
         Planet(
-            position = "2",
+            position = 2,
             name = "Venus",
             image = "https://space-facts.com/wp-content/uploads/venus-transparent.png",
             velocity = "35.0",
@@ -23,7 +25,7 @@ object Planets {
 
         ),
         Planet(
-            position = "3",
+            position = 3,
             name = "Earth",
             image = "https://space-facts.com/wp-content/uploads/earth-transparent.png",
             velocity = "29.8",
@@ -32,7 +34,7 @@ object Planets {
             color = 0xFF2F6A69
         ),
         Planet(
-            position = "4",
+            position = 4,
             name = "Mars",
             image = "https://space-facts.com/wp-content/uploads/mars-transparent.png",
             velocity = "24.1",
@@ -41,7 +43,7 @@ object Planets {
             color = 0xFF993D00
         ),
         Planet(
-            position = "5",
+            position = 5,
             name = "Jupiter",
             image = "https://space-facts.com/wp-content/uploads/jupiter-transparent.png",
             velocity = "13.1",
@@ -50,7 +52,7 @@ object Planets {
             color = 0xFFB07F35
         ),
         Planet(
-            position = "6",
+            position = 6,
             name = "Saturn",
             image = "https://space-facts.com/wp-content/uploads/saturn-transparent.png",
             velocity = "9.7",
@@ -59,7 +61,7 @@ object Planets {
             color = 0xFFB08F36
         ),
         Planet(
-            position = "7",
+            position = 7,
             name = "Uranus",
             image = "https://space-facts.com/wp-content/uploads/uranus-transparent.png",
             velocity = "6.8",
@@ -68,7 +70,7 @@ object Planets {
             color = 0xFF5580AA
         ),
         Planet(
-            position = "8",
+            position = 8,
             name = "Neptune",
             image = "https://space-facts.com/wp-content/uploads/neptune-transparent.png",
             velocity = "5.4",
@@ -77,7 +79,7 @@ object Planets {
             color = 0xFF366896
         ),
         Planet(
-            position = "9",
+            position = 9,
             name = "Sun",
             image = "https://pngimg.com/uploads/sun/sun_PNG13424.png",
             velocity = "220.0",

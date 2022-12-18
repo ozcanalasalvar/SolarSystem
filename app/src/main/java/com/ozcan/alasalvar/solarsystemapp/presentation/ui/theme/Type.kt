@@ -1,4 +1,4 @@
-package com.ozcan.alasalvar.solarsystemapp.ui.theme
+package com.ozcan.alasalvar.solarsystemapp.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

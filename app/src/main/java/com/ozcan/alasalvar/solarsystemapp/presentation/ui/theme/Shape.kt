@@ -1,4 +1,4 @@
-package com.ozcan.alasalvar.solarsystemapp.ui.theme
+package com.ozcan.alasalvar.solarsystemapp.presentation.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

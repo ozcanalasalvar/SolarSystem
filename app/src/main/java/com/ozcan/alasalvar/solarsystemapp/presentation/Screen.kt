@@ -1,4 +1,4 @@
-package com.ozcan.alasalvar.solarsystemapp.navigation
+package com.ozcan.alasalvar.solarsystemapp.presentation
 
 import androidx.annotation.StringRes
 import com.ozcan.alasalvar.solarsystemapp.R
