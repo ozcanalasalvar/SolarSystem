@@ -71,7 +71,7 @@ fun PlanetSlider(
             .fillMaxWidth()
             .padding(5.dp, 0.dp, 0.dp, 0.dp)
             .clickable {
-                onClick(page)
+                onClick(planets[page].position)
             },
             shape = RoundedCornerShape(20.dp),
             border = BorderStroke(3.dp, Color.White),

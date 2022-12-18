@@ -15,22 +15,67 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.ozcan.alasalvar.solarsystemapp.R
 import com.ozcan.alasalvar.solarsystemapp.presentation.component.FeatureCard
 import com.ozcan.alasalvar.solarsystemapp.data.Planets
+import com.ozcan.alasalvar.solarsystemapp.domain.model.Planet
+import com.ozcan.alasalvar.solarsystemapp.navigation.Screen
+import com.ozcan.alasalvar.solarsystemapp.navigation.withArgs
+import com.ozcan.alasalvar.solarsystemapp.presentation.home.HomeContent
+
+@Composable
+fun DetailScreen(
+    position: Int,
+    navController: NavController,
+    viewModel: DetailViewModel = hiltViewModel()
+) {
+
+    val uiState = viewModel.uiState
+
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+
+        if (uiState.success != null) {
+            DetailContent(planet = uiState.success) {
+                navController.popBackStack()
+            }
+        }
+
+        if (uiState.loading) {
+            CircularProgressIndicator(
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .size(100.dp), color = MaterialTheme.colors.surface
+            )
+        }
+
+        uiState.error?.let { error ->
+            Text(
+                text = error,
+                color = Color.Red,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.align(Alignment.Center)
+            )
+        }
+
+    }
+
+
+}
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun DetailScreen(position: Int, navController: NavController) {
-
-    val planet = Planets.planets[position]
+fun DetailContent(planet: Planet, onBackPressed: () -> Unit) {
 
     Box(
         modifier = Modifier
@@ -111,10 +156,8 @@ fun DetailScreen(position: Int, navController: NavController) {
                 .padding(top = 30.dp)
                 .size(34.dp)
                 .clickable {
-                    navController.popBackStack()
+                    onBackPressed()
                 },
         )
     }
-
-
 }
