@@ -136,7 +136,7 @@ fun TextPlanetInfo(info: String, modifier: Modifier = Modifier) {
         Text(
             text = info,
             color = MaterialTheme.colors.onSurface,
-            fontSize = 17.sp,
+            fontSize = 15.sp,
             fontWeight = FontWeight.Normal,
             modifier = Modifier.padding(start = 15.dp, bottom = 5.dp),
             maxLines = 3,
