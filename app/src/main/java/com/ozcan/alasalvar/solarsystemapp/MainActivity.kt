@@ -9,8 +9,6 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.ozcan.alasalvar.solarsystemapp.ui.theme.SolarSystemAppTheme
-import com.ozcan.alasalvar.solarsystemapp.view.DetailScreen
-import com.ozcan.alasalvar.solarsystemapp.view.HomeScreen
 import com.ozcan.alasalvar.solarsystemapp.view.Navigation
 
 @OptIn(ExperimentalPagerApi::class)
@@ -25,8 +23,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Navigation()
-                    //HomeScreen()
-                    //DetailScreen()
                 }
             }
         }

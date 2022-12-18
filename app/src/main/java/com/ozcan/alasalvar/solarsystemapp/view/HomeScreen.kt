@@ -50,7 +50,7 @@ fun HomeScreen(navController: NavController) {
                     start.linkTo(parent.start)
                     top.linkTo(parent.top)
                 }
-                .padding(top = 50.dp)
+                .padding(top = 30.dp)
         )
 
         PlanetSlider(
@@ -85,7 +85,7 @@ fun HomeScreen(navController: NavController) {
         HorizontalPagerIndicator(
             pagerState = pagerState,
             modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                .padding(start = 15.dp, end = 15.dp, bottom = 20.dp)
                 .constrainAs(indicator) {
                     bottom.linkTo(parent.bottom)
                     start.linkTo(parent.start)
