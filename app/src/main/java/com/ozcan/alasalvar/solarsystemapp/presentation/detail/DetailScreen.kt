@@ -1,4 +1,4 @@
-package com.ozcan.alasalvar.solarsystemapp.view
+package com.ozcan.alasalvar.solarsystemapp.presentation.detail
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -23,7 +23,7 @@ import androidx.navigation.NavController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.ozcan.alasalvar.solarsystemapp.R
-import com.ozcan.alasalvar.solarsystemapp.component.FeatureCard
+import com.ozcan.alasalvar.solarsystemapp.presentation.component.FeatureCard
 import com.ozcan.alasalvar.solarsystemapp.data.Planets
 
 @OptIn(ExperimentalGlideComposeApi::class)

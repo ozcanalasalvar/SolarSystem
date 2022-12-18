@@ -1,4 +1,4 @@
-package com.ozcan.alasalvar.solarsystemapp.component
+package com.ozcan.alasalvar.solarsystemapp.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

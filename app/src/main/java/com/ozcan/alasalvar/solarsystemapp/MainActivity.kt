@@ -8,8 +8,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.ozcan.alasalvar.solarsystemapp.ui.theme.SolarSystemAppTheme
-import com.ozcan.alasalvar.solarsystemapp.view.Navigation
+import com.ozcan.alasalvar.solarsystemapp.presentation.ui.theme.SolarSystemAppTheme
+import com.ozcan.alasalvar.solarsystemapp.presentation.Navigation
 
 @OptIn(ExperimentalPagerApi::class)
 class MainActivity : ComponentActivity() {

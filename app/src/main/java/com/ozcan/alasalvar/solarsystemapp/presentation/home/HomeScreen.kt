@@ -1,4 +1,4 @@
-package com.ozcan.alasalvar.solarsystemapp.view
+package com.ozcan.alasalvar.solarsystemapp.presentation.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -18,7 +18,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.ozcan.alasalvar.solarsystemapp.R
-import com.ozcan.alasalvar.solarsystemapp.component.PlanetSlider
+import com.ozcan.alasalvar.solarsystemapp.presentation.component.PlanetSlider
 import com.ozcan.alasalvar.solarsystemapp.data.Planets
 import com.ozcan.alasalvar.solarsystemapp.navigation.Screen
 import com.ozcan.alasalvar.solarsystemapp.navigation.withArgs

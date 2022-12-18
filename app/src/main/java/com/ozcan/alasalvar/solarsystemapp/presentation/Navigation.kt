@@ -1,4 +1,4 @@
-package com.ozcan.alasalvar.solarsystemapp.view
+package com.ozcan.alasalvar.solarsystemapp.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -7,6 +7,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.ozcan.alasalvar.solarsystemapp.navigation.Screen
+import com.ozcan.alasalvar.solarsystemapp.presentation.detail.DetailScreen
+import com.ozcan.alasalvar.solarsystemapp.presentation.home.HomeScreen
 
 @Composable
 fun Navigation() {
