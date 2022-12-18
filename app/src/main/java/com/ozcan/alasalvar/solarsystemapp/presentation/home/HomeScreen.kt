@@ -2,32 +2,69 @@ package com.ozcan.alasalvar.solarsystemapp.presentation.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.ozcan.alasalvar.solarsystemapp.R
 import com.ozcan.alasalvar.solarsystemapp.presentation.component.PlanetSlider
-import com.ozcan.alasalvar.solarsystemapp.data.Planets
+import com.ozcan.alasalvar.solarsystemapp.domain.model.Planet
 import com.ozcan.alasalvar.solarsystemapp.navigation.Screen
 import com.ozcan.alasalvar.solarsystemapp.navigation.withArgs
 
+
+@Composable
+fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltViewModel()) {
+
+    val uiState = viewModel.uiState
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        if (uiState.success.isNotEmpty()) {
+            HomeContent(uiState.success) { position ->
+                navController.navigate(Screen.Details.withArgs(position))
+            }
+        }
+
+        if (uiState.loading) {
+            CircularProgressIndicator(
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .size(100.dp), color = MaterialTheme.colors.surface
+            )
+        }
+
+        uiState.error?.let { error ->
+            Text(
+                text = error,
+                color = Color.Red,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.align(Alignment.Center)
+            )
+        }
+
+
+    }
+}
+
 @OptIn(ExperimentalPagerApi::class, ExperimentalComposeUiApi::class)
 @Composable
-fun HomeScreen(navController: NavController) {
-
-    val planets = remember { mutableStateOf(Planets.planets) }
+fun HomeContent(planets: List<Planet>, onClick: (Int) -> Unit) {
 
     val planetsInfo = remember { mutableStateOf("") }
 
@@ -35,7 +72,7 @@ fun HomeScreen(navController: NavController) {
 
     LaunchedEffect(pagerState) {
         snapshotFlow { pagerState.currentPage }.collect { page ->
-            val description = planets.value[page].description
+            val description = planets[page].description
             planetsInfo.value = description
         }
     }
@@ -54,7 +91,7 @@ fun HomeScreen(navController: NavController) {
         )
 
         PlanetSlider(
-            planets.value, pagerState,
+            planets, pagerState,
             modifier = Modifier
                 //.height(450.dp)
                 .fillMaxHeight(0.6f)
@@ -64,7 +101,7 @@ fun HomeScreen(navController: NavController) {
                     bottom.linkTo(info.top)
                 },
             onClick = { position ->
-                navController.navigate(Screen.Details.withArgs(position))
+                onClick(position)
             }
         )
 
@@ -96,7 +133,6 @@ fun HomeScreen(navController: NavController) {
 
     }
 }
-
 
 @Composable
 fun HomeHeader(modifier: Modifier = Modifier) {

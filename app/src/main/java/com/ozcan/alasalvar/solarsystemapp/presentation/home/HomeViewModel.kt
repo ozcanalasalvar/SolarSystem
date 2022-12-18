@@ -1,7 +1,8 @@
 package com.ozcan.alasalvar.solarsystemapp.presentation.home
 
-import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ozcan.alasalvar.solarsystemapp.domain.model.Planet
@@ -20,22 +21,21 @@ data class HomeUiState(
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    private val _uiState = mutableStateOf(HomeUiState())
-    val uiState: State<HomeUiState> = _uiState
+    var uiState by mutableStateOf(HomeUiState())
+        private set
 
     init {
         getPlanets()
     }
+
     private fun getPlanets() = viewModelScope.launch {
-        _uiState.value = _uiState.value.copy(loading = true)
+        uiState = uiState.copy(loading = true)
         when (val result = repository.getPlanets()) {
             is Resource.Error -> {
-                _uiState.value =
-                    _uiState.value.copy(loading = false, error = result.exception.message)
+                uiState = uiState.copy(loading = false, error = result.exception.message)
             }
             is Resource.Success -> {
-                _uiState.value =
-                    _uiState.value.copy(loading = false, success = result.data, error = null)
+                uiState = uiState.copy(loading = false, success = result.data, error = null)
             }
         }
     }
