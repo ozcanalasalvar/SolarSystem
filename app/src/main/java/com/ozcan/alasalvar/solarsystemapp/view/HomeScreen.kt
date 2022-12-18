@@ -58,7 +58,7 @@ fun HomeScreen(navController: NavController) {
             modifier = Modifier
                 //.height(450.dp)
                 .fillMaxHeight(0.6f)
-                .padding(0.dp, 40.dp, 0.dp, 70.dp)
+                .padding(0.dp, 30.dp, 0.dp, 70.dp)
                 .constrainAs(slider) {
                     top.linkTo(header.bottom)
                     bottom.linkTo(info.top)
@@ -102,45 +102,58 @@ fun HomeScreen(navController: NavController) {
 fun HomeHeader(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         Text(
-            text = stringResource(id = R.string.welcome_aboard),
+            text = stringResource(id = R.string.explore),
             color = MaterialTheme.colors.surface,
-            fontSize = 25.sp,
+            fontSize = 35.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(start = 15.dp)
         )
 
         Text(
-            text = stringResource(id = R.string.see_what),
+            text = stringResource(id = R.string.solar_system),
             color = MaterialTheme.colors.onSurface,
-            fontSize = 15.sp,
+            fontSize = 17.sp,
             fontWeight = FontWeight.Normal,
-            modifier = Modifier.padding(start = 15.dp, top = 10.dp)
+            modifier = Modifier.padding(start = 15.dp)
         )
     }
 }
 
 @Composable
 fun TextPlanetInfo(info: String, modifier: Modifier = Modifier) {
-    Row(
-        modifier = modifier
-            .height(IntrinsicSize.Min)
-    ) {
-        Box(
-            modifier = Modifier
-                .width(2.dp)
-                .background(MaterialTheme.colors.onSurface)
-                .fillMaxSize()
-        )
 
-
+    Column(modifier = modifier) {
         Text(
-            text = info,
-            color = MaterialTheme.colors.onSurface,
-            fontSize = 15.sp,
+            text = stringResource(id = R.string.snippet),
+            color = MaterialTheme.colors.surface,
+            fontSize = 19.sp,
             fontWeight = FontWeight.Normal,
-            modifier = Modifier.padding(start = 15.dp, bottom = 5.dp),
-            maxLines = 3,
-            overflow = TextOverflow.Ellipsis
+            modifier = Modifier.padding(bottom = 10.dp)
         )
+
+
+        Row(
+            modifier = Modifier
+                .height(IntrinsicSize.Min)
+        ) {
+            Box(
+                modifier = Modifier
+                    .width(2.dp)
+                    .background(MaterialTheme.colors.onSurface)
+                    .fillMaxSize()
+            )
+
+
+            Text(
+                text = info,
+                color = MaterialTheme.colors.onSurface,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Normal,
+                modifier = Modifier.padding(start = 15.dp, bottom = 5.dp),
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis
+            )
+        }
     }
+
 }
