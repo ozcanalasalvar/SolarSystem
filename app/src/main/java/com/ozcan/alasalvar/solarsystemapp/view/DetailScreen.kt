@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -31,49 +32,17 @@ fun DetailScreen(position: Int, navController: NavController) {
 
     val planet = Planets.planets[position]
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 30.dp, start = 20.dp, end = 20.dp)
+            .padding(start = 20.dp, end = 20.dp)
     ) {
-        Icon(
-            imageVector = ImageVector.vectorResource(id = R.drawable.back_arrow),
-            contentDescription = "Some icon",
-            tint = MaterialTheme.colors.surface,
-            modifier = Modifier
-                .size(34.dp)
-                .clickable {
-                    navController.popBackStack()
-                },
-        )
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-
-            Text(
-                text = "Planet",
-                fontSize = 18.sp,
-                color = MaterialTheme.colors.onSurface,
-                fontWeight = FontWeight.Normal,
-                modifier = Modifier
-                    .align(alignment = Alignment.Start)
-                    .padding(top = 20.dp)
-            )
-
-
-            Text(
-                text = planet.name,
-                fontSize = 35.sp,
-                color = MaterialTheme.colors.surface,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .align(alignment = Alignment.Start)
-                    .padding(top = 5.dp)
-            )
-
 
 
             GlideImage(
@@ -83,7 +52,28 @@ fun DetailScreen(position: Int, navController: NavController) {
                 modifier = Modifier
                     .height(350.dp)
                     .fillMaxWidth()
-                    .align(Alignment.CenterHorizontally)
+                    .align(Alignment.End)
+                    .offset(x = 90.dp)
+            )
+
+            Text(
+                text = planet.name,
+                fontSize = 35.sp,
+                color = MaterialTheme.colors.surface,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .align(alignment = Alignment.Start)
+            )
+
+
+            Text(
+                text = stringResource(id = R.string.solar_system),
+                fontSize = 13.sp,
+                color = MaterialTheme.colors.onSurface,
+                fontWeight = FontWeight.Normal,
+                modifier = Modifier
+                    .align(alignment = Alignment.Start)
+                    .padding(start = 2.dp)
             )
 
             Text(
@@ -112,6 +102,18 @@ fun DetailScreen(position: Int, navController: NavController) {
                 modifier = Modifier.padding(top = 15.dp, bottom = 50.dp)
             )
         }
+
+        Icon(
+            imageVector = ImageVector.vectorResource(id = R.drawable.back_arrow),
+            contentDescription = "Some icon",
+            tint = MaterialTheme.colors.surface,
+            modifier = Modifier
+                .padding(top = 30.dp)
+                .size(34.dp)
+                .clickable {
+                    navController.popBackStack()
+                },
+        )
     }
 
 
