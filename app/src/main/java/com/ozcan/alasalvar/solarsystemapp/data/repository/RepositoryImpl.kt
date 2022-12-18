@@ -5,8 +5,9 @@ import com.ozcan.alasalvar.solarsystemapp.domain.model.Planet
 import com.ozcan.alasalvar.solarsystemapp.domain.repository.Repository
 import com.ozcan.alasalvar.solarsystemapp.domain.util.Resource
 import kotlinx.coroutines.delay
+import javax.inject.Inject
 
-class RepositoryImpl : Repository {
+class RepositoryImpl @Inject constructor() : Repository {
 
     private val planets = Planets.planets
 
