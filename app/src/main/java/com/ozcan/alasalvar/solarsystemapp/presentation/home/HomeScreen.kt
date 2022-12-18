@@ -25,8 +25,8 @@ import com.google.accompanist.pager.rememberPagerState
 import com.ozcan.alasalvar.solarsystemapp.R
 import com.ozcan.alasalvar.solarsystemapp.presentation.component.PlanetSlider
 import com.ozcan.alasalvar.solarsystemapp.domain.model.Planet
-import com.ozcan.alasalvar.solarsystemapp.navigation.Screen
-import com.ozcan.alasalvar.solarsystemapp.navigation.withArgs
+import com.ozcan.alasalvar.solarsystemapp.presentation.Screen
+import com.ozcan.alasalvar.solarsystemapp.presentation.withArgs
 
 
 @Composable

@@ -6,7 +6,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.ozcan.alasalvar.solarsystemapp.navigation.Screen
 import com.ozcan.alasalvar.solarsystemapp.presentation.detail.DetailScreen
 import com.ozcan.alasalvar.solarsystemapp.presentation.home.HomeScreen
 
