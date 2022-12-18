@@ -1,7 +1,7 @@
-package com.ozcan.alasalvar.solarsystemapp.data
+package com.ozcan.alasalvar.solarsystemapp.domain.model
 
 data class Planet(
-    val position: String,
+    val position: Int,
     val name: String,
     val image: String,
     val velocity: String,
