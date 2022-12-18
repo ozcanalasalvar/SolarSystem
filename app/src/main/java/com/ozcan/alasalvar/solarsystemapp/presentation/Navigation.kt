@@ -15,7 +15,10 @@ fun Navigation() {
 
     NavHost(navController = navController, startDestination = Screen.Home.route) {
         composable(route = Screen.Home.route) {
-            HomeScreen(navController = navController)
+            HomeScreen(
+                onPlanetClick = { position ->
+                    navController.navigate(Screen.Details.withArgs(position))
+                })
         }
 
         composable(
@@ -26,7 +29,11 @@ fun Navigation() {
                 }
             )
         ) { entry ->
-            DetailScreen(position = entry.arguments?.getInt("position") ?: 0, navController)
+            DetailScreen(
+                position = entry.arguments?.getInt("position") ?: 0,
+                onBackLicked = {
+                    navController.popBackStack()
+                })
         }
     }
 
