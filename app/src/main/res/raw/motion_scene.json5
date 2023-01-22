@@ -1,0 +1,38 @@
+{
+  ConstraintSets: {
+    start: {
+      planetImage: {
+        width: "spread",
+        height: 350,
+        top: ['parent', 'top', 0],
+        end: ['parent', 'end', 50]
+      },
+
+    },
+    end: {
+      planetImage: {
+        width: "wrap",
+        height: 350,
+        start: ['parent', 'end', 0],
+      },
+    }
+  },
+  Transitions: {
+    default: {
+      from: 'start',
+      to: 'end',
+      pathMotionArc: 'startHorizontal',
+      KeyFrames: {
+        KeyAttributes: [
+          {
+            target: ['planetImage'],
+            frames: [0, 50, 100],
+            translationY: [0, -200, 0],
+            scaleX: [1, 3, 1],
+            scaleY: [1, 3, 1],
+          }
+        ]
+      }
+    }
+  }
+}
