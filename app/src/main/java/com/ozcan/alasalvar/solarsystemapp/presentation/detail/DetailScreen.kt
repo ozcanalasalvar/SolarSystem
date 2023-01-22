@@ -1,20 +1,29 @@
 package com.ozcan.alasalvar.solarsystemapp.presentation.detail
 
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.layoutId
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ExperimentalMotionApi
+import androidx.constraintlayout.compose.MotionLayout
+import androidx.constraintlayout.compose.MotionScene
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
@@ -66,30 +75,22 @@ fun DetailScreen(
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun DetailContent(planet: Planet, onBackPressed: () -> Unit) {
-
     Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(start = 20.dp, end = 20.dp)
     ) {
 
+        val scrollState = rememberScrollState()
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(scrollState)
         ) {
 
 
-            GlideImage(
-                model = planet.image,
-                contentDescription = "planet image",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .height(350.dp)
-                    .fillMaxWidth()
-                    .align(Alignment.End)
-                    .offset(x = 90.dp)
-            )
+            PlanetImage(planet = planet, scrollState = scrollState)
 
             Text(
                 text = planet.name,
@@ -136,6 +137,9 @@ fun DetailContent(planet: Planet, onBackPressed: () -> Unit) {
                 unit = "million kilometers",
                 modifier = Modifier.padding(top = 15.dp, bottom = 50.dp)
             )
+
+
+            Box(modifier = Modifier.height(200.dp))
         }
 
         Icon(
@@ -148,6 +152,42 @@ fun DetailContent(planet: Planet, onBackPressed: () -> Unit) {
                 .clickable {
                     onBackPressed()
                 },
+        )
+    }
+}
+
+@OptIn(ExperimentalMotionApi::class, ExperimentalGlideComposeApi::class)
+@Composable
+fun PlanetImage(planet: Planet, scrollState: ScrollState) {
+
+    val context = LocalContext.current
+    val motionScene = remember {
+        context.resources.openRawResource(R.raw.motion_scene).readBytes().decodeToString()
+    }
+
+    val progress by animateFloatAsState(
+        targetValue = (scrollState.value.toFloat() / 100).takeIf { it <= 1 } ?: 1f,
+        tween(500)
+    )
+
+
+    MotionLayout(
+        motionScene = MotionScene(content = motionScene),
+        progress = progress,
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+
+
+        GlideImage(
+            model = planet.image,
+            contentDescription = "planet image",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .height(350.dp)
+                .fillMaxWidth()
+                .layoutId("planetImage")
+                .offset(x = 90.dp)
         )
     }
 }
